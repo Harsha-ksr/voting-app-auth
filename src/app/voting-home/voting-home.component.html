@@ -1,0 +1,30 @@
+<app-header></app-header>
+<h1>Welcome to Voting Application..!</h1>
+
+<div class="collapse navbar-collapse" id="myNavbar" style="font-size: larger;">
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <div class="name" (click)="goToCreate()">
+        Create New Question
+      </div>
+    </li>
+    <br>
+    <p>click on Create New Question to create a new question for people to vote on</p>
+    <hr>
+    <li>
+      <div class="name" (click)="goToView()">
+        View Questions and Vote
+      </div>
+    </li>
+    <br>
+    <p>click on View Questions and Vote to vote on questions that you and other people have created.</p>
+    <hr>
+    <li>
+      <div class="name" (click)="goToResults()">
+        View results
+      </div>
+    </li>
+    <br>
+    <p>click on View Results to check the voting results..</p>
+  </ul>
+</div>

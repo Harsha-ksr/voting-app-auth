@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+<form #userForm="ngForm">
+  <h1>Cast Vote</h1>
+  <hr>
+  <h2 style="text-align: center;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">In this section, you can
+    cast vote to diverse questions posted by multiple users. The options can be Yes or No.
+  </h2>
+  <div style="text-align: center;font-size:larger;" *ngIf="currentIndex < this.listOfQuestions.length; else elseBlock">
+    <label>{{ this.listOfQuestions[this.currentIndex] }}</label>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" id="yesOption" [(ngModel)]="this.castedVote" name="yesOption"
+        value="Yes" (change)="onItemChange($event)">
+      <label class="form-check-label" for="radio1">Yes</label>
+    </div>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" id="noOption" [(ngModel)]="this.castedVote" name="noOption"
+        value="No" (change)="onItemChange($event)">
+      <label class="form-check-label" for="radio2">No</label>
+    </div>
+    <button (click)="next()">Submit</button><br><br>
+    <label style="color: red;" ng-if="this.alreadyVoted.length() > 0">{{alreadyVoted}}</label><br>
+    <button (click)="onNextQuestion()">Next Question</button>
+
+  </div>
+  <ng-template #elseBlock>
+    <div style="text-align: center;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+      *ngIf="this.votingDetailsByUser.length > 1; else elseBlock">
+      <h2>Responses recorded. If you want to view results, Click on View Results Button on top right corner.</h2>
+      <h3>Your Responses = {{ this.votingDetailsByUserTemp}}</h3>
+    </div>
+    <ng-template #elseBlock>
+      <h2 style="text-align: center;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">No Responses recorded.
+        Thank you for participation.</h2>
+    </ng-template>
+  </ng-template>
+</form>
